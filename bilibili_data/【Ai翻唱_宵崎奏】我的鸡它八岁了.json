@@ -1,0 +1,40 @@
+{
+  "video_info": {
+    "title": "【Ai翻唱/宵崎奏】我的鸡它八岁了",
+    "cid": 26954106163,
+    "bvid": "BV1sCBWYLEWA"
+  },
+  "danmaku_data": {
+    "chatserver": "chat.bilibili.com",
+    "chatid": "26954106163",
+    "mission": "0",
+    "maxlimit": "100",
+    "state": "0",
+    "real_name": "0",
+    "source": "k-v",
+    "comments": [
+      {
+        "time": 3.654,
+        "type": 5,
+        "size": 25,
+        "color": 16777215,
+        "timestamp": 1732542433,
+        "pool": 0,
+        "user_hash": "91178a82",
+        "dmid": "1723449858398004224",
+        "content": "mzk：还有高手？"
+      },
+      {
+        "time": 0.0,
+        "type": 5,
+        "size": 25,
+        "color": 8700107,
+        "timestamp": 1732436905,
+        "pool": 0,
+        "user_hash": "30c188a3",
+        "dmid": "1722564624802974976",
+        "content": "哇还有扶她"
+      }
+    ]
+  }
+}
