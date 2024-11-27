@@ -157,7 +157,7 @@ all_comments = []
 #                 content = comment.get("content", "")
 #                 all_comments.append(content)
 
-with open("namelist.txt", "r", encoding="utf-8") as f:
+with open("results/namelist.txt", "r", encoding="utf-8") as f:
     all_comments = f.readlines()
     # print(all_comments)
 
@@ -190,7 +190,7 @@ with open("word_freq.txt", "w", encoding="utf-8") as f:
 # 生成词云
 filtered_text = " ".join(words)
 wordcloud = WordCloud(
-    font_path="simsun.ttc",
+    font_path="results/simsun.ttc",
     width=800,
     height=400,
     background_color="white",

@@ -7,7 +7,7 @@ from datetime import datetime
 plt.rcParams['font.family'] = 'SimHei'
 plt.rcParams['axes.unicode_minus'] = False
 
-file_name = "results/keyword_'e'_bilibili_videos.csv"
+file_name = "results/keyword_'1'_bilibili_videos.csv"
 
 df = pd.read_csv(file_name, encoding='utf-8-sig')
 df['发布时间'] = pd.to_datetime(df['发布时间']) 

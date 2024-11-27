@@ -4,7 +4,8 @@ from urllib.parse import quote
 import time
 import random
 from datetime import datetime, timezone
-import tqdm # tqdm用于显示进度条
+# import tqdm # tqdm用于显示进度条
+from tqdm import tqdm
 
 
 def convert_to_timestamp(date_str):
@@ -54,9 +55,9 @@ def get_bilibili_search_results(keyword, start_time, end_time, max_pages=10):
         "Sec-Fetch-Site": "same-site",
     }
     # tqdm用于显示进度条
-    for page in tqdm.tqdm(range(1, max_pages + 1)):
+    for page in tqdm(range(1, max_pages + 1)):
         # print(f"正在爬取第 {page} 页...")
-        tqdm.tqdm.write(f"正在爬取第 {page} 页...")
+        tqdm.write(f"正在爬取第 {page} 页...")
         
         url = (
             f"https://api.bilibili.com/x/web-interface/search/type?"
@@ -111,64 +112,6 @@ def get_bilibili_search_results(keyword, start_time, end_time, max_pages=10):
             print(f"发生错误：{e}")
             break
 
-        
-    # for page in range(1, max_pages + 1):
-    #     print(f"正在爬取第 {page} 页...")
-        
-    #     # 构建URL
-    #     url = (
-    #         f"https://api.bilibili.com/x/web-interface/search/type?"
-    #         f"keyword={encoded_keyword}"
-    #         f"&from_source=webtop_search&spm_id_from=333.1007&search_source=5"
-    #         f"&search_type=video"
-    #         f"&page={page}"
-    #         f"&order=pubdate"
-    #         f"&pubtime_begin_s={start_time}"
-    #         f"&pubtime_end_s={end_time}"
-    #     )
-    #     # print(url)
-        
-    #     try:
-    #         response = requests.get(url, headers=headers)
-
-    #         if response.status_code != 200:
-    #             print(f"请求失败，状态码：{response.status_code}")
-    #             break
-
-    #         data = response.json()
-
-    #         if data.get("code") != 0:
-    #             print(f"API返回错误：{data.get('message')}")
-    #             break
-
-    #         results = data.get("data", {}).get("result", [])
-
-    #         if not results:
-    #             break
-
-    #         for video in results:
-    #             video_info = {
-    #                 "BV号": video.get("bvid", ""),
-    #                 "标题": video.get("title", "")
-    #                 .replace('<em class="keyword">', "")
-    #                 .replace("</em>", ""),
-    #                 "作者": video.get("author", ""),
-    #                 "播放量": video.get("play", 0),
-    #                 "弹幕数": video.get("video_review", 0),
-    #                 "发布时间": time.strftime(
-    #                     "%Y-%m-%d %H:%M:%S", time.localtime(video.get("pubdate", 0))
-    #                 ),
-    #                 "视频链接": f"https://www.bilibili.com/video/{video.get('bvid', '')}",
-    #             }
-    #             video_list.append(video_info)
-
-    #         # 随机延时，避免被封
-    #         time.sleep(random.uniform(1, 3))
-
-    #     except Exception as e:
-    #         print(f"发生错误：{e}")
-    #         break
-
     return video_list
 
 
@@ -211,7 +154,7 @@ def main():
     # max_pages = int(input("请输入最大爬取页数"))
     
     # *args, *kwargs = None, None
-    keyword = "e"
+    keyword = "1"
     start_time_str = "2024-11-01 00:00:00"
     end_time_str = "2024-11-18 23:59:59"
     max_pages = 50

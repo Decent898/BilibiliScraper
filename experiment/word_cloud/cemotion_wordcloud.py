@@ -193,7 +193,7 @@ def create_word_cloud(words):
     filtered_text = " ".join(words)
     
     wordcloud = WordCloud(
-        font_path="simsun.ttc",
+        font_path="results/simsun.ttc",
         width=800,
         height=400,
         background_color="white",
