@@ -130,3 +130,11 @@ dmypy.json
 
 .cemotion_cache/
 .cemotion_cache
+
+bilibili_data/*
+bilibili_data/
+.bilibili_data/
+.bilibili_data
+
+bilibili_comment_data
+.bilibili_comment_data
