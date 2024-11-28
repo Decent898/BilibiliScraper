@@ -55,9 +55,10 @@ def get_bilibili_search_results(keyword, start_time, end_time, max_pages=10):
         "Sec-Fetch-Site": "same-site",
     }
     # tqdm用于显示进度条
-    for page in tqdm(range(1, max_pages + 1)):
+    # for page in tqdm(range(1, max_pages + 1)):
+    for page in range(1, max_pages + 1):
         # print(f"正在爬取第 {page} 页...")
-        tqdm.write(f"正在爬取第 {page} 页...")
+        # tqdm.write(f"正在爬取第 {page} 页...")
         
         url = (
             f"https://api.bilibili.com/x/web-interface/search/type?"
@@ -87,6 +88,7 @@ def get_bilibili_search_results(keyword, start_time, end_time, max_pages=10):
             results = data.get("data", {}).get("result", [])
 
             if not results:
+                print(f"at page {page} no results")
                 break
 
             for video in results:
@@ -156,8 +158,8 @@ def main():
     # *args, *kwargs = None, None
     keyword = "1"
     start_time_str = "2024-11-01 00:00:00"
-    end_time_str = "2024-11-18 23:59:59"
-    max_pages = 50
+    end_time_str = "2024-11-27 23:59:59"
+    max_pages = 10
 
     start_time = convert_to_timestamp(start_time_str)-8*60*60 # 实验发现是按照utc-8时间来计算的
     end_time = convert_to_timestamp(end_time_str)-8*60*60
@@ -170,7 +172,16 @@ def main():
     if start_time is None or end_time is None:
         return
 
-    video_list = get_bilibili_search_results(keyword, start_time, end_time, max_pages)
+    # video_list = get_bilibili_search_results(keyword, start_time, end_time, max_pages)
+
+    video_list = []
+    
+    # for time_stride in range(start_time, end_time, 86400):
+
+    # tqdm
+    for time_stride in tqdm(range(start_time, end_time, 86400)):
+        video_list += get_bilibili_search_results(keyword, time_stride, time_stride+86400, max_pages)
+
 
     print(f"共找到 {len(video_list)} 个视频")
     save_to_csv(video_list, f"results/keyword_'{keyword}'_bilibili_videos.csv")

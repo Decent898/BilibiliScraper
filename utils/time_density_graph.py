@@ -4,7 +4,7 @@ import seaborn as sns
 from datetime import datetime
 
 # 中文
-plt.rcParams['font.family'] = 'SimHei'
+plt.rcParams['font.family'] = 'src/simsun.ttc'
 plt.rcParams['axes.unicode_minus'] = False
 
 file_name = "results/keyword_'1'_bilibili_videos.csv"
@@ -25,7 +25,7 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
-# plt.savefig('results/bilibili_time_density.png', dpi=300)
+plt.savefig('results/bilibili_time_density.png', dpi=300)
 
 print("视频总数:", len(df))
 print("最早发布时间:", df['发布时间'].min())

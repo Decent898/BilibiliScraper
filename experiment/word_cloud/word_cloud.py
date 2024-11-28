@@ -190,7 +190,7 @@ with open("word_freq.txt", "w", encoding="utf-8") as f:
 # 生成词云
 filtered_text = " ".join(words)
 wordcloud = WordCloud(
-    font_path="results/simsun.ttc",
+    font_path="src/simsun.ttc",
     width=800,
     height=400,
     background_color="white",
@@ -204,4 +204,5 @@ plt.figure(figsize=(10, 5))
 plt.imshow(wordcloud, interpolation="bilinear")
 plt.axis("off")
 plt.title("Bilibili Danmaku Word Cloud with Shape Mask")
+plt.savefig("word_cloud.png")
 plt.show()
