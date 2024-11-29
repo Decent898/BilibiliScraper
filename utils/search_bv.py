@@ -55,8 +55,8 @@ def get_bilibili_search_results(keyword, start_time, end_time, max_pages=10):
         "Sec-Fetch-Site": "same-site",
     }
     # tqdm用于显示进度条
-    # for page in tqdm(range(1, max_pages + 1)):
-    for page in range(1, max_pages + 1):
+    for page in tqdm(range(1, max_pages + 1)):
+    # for page in range(1, max_pages + 1):
         # print(f"正在爬取第 {page} 页...")
         # tqdm.write(f"正在爬取第 {page} 页...")
         
@@ -66,7 +66,7 @@ def get_bilibili_search_results(keyword, start_time, end_time, max_pages=10):
             f"&from_source=webtop_search&spm_id_from=333.1007&search_source=5"
             f"&search_type=video"
             f"&page={page}"
-            f"&order=pubdate"
+            # f"&order=pubdate"
             f"&pubtime_begin_s={start_time}"
             f"&pubtime_end_s={end_time}"
         )
@@ -156,10 +156,10 @@ def main():
     # max_pages = int(input("请输入最大爬取页数"))
     
     # *args, *kwargs = None, None
-    keyword = "1"
+    keyword = "的"
     start_time_str = "2024-11-01 00:00:00"
     end_time_str = "2024-11-27 23:59:59"
-    max_pages = 10
+    max_pages = 100
 
     start_time = convert_to_timestamp(start_time_str)-8*60*60 # 实验发现是按照utc-8时间来计算的
     end_time = convert_to_timestamp(end_time_str)-8*60*60

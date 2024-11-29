@@ -196,7 +196,7 @@ class BilibiliCrawler:
 def main():
     crawler = BilibiliCrawler()
     input_file = "results/bv_list.txt"  # BV号列表文件
-    crawler.process_from_file(input_file, save_format='both', pages=10)
+    crawler.process_from_file(input_file, save_format='both', pages=5)
 
 if __name__ == "__main__":
     main()
